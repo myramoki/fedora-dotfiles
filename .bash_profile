@@ -10,6 +10,3 @@ if [ -f ~/.bashrc ]; then
 fi
 
 # User specific environment and startup programs
-
-LESS='-S'
-export LESS
