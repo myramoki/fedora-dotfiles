@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -o errexit
+set -o errtrace
+set -o pipefail
+
+sftp bizbuilder:downloads/$1 /tmp
+
+cd /opt/biznuvo
+
+sudo -u tomcat tar xvf /tmp/$1

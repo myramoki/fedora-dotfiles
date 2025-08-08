@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -o errexit
+set -o errtrace
+set -o pipefail
+
+sftp bizbuilder:downloads/$1 /tmp
+
+cd /opt/biznuvo
+
+sudo -u tomcat /opt/tomcat/update-app.sh --ui /tmp/$1
+
+rm /tmp/$1

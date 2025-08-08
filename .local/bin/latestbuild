@@ -1,3 +1,0 @@
-#!/bin/sh
-
-find /mnt/shared -name 'pg-*.tgz' -printf "%T@ %p\n" | sort -nr | head -1 | cut -d\  -f2
