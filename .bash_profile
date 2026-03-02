@@ -1,12 +1,31 @@
-# .bash_profile
+export PATH=$PATH:$HOME/.local/bin:$HOME/bin
+export LESS="-iR"
+export LS_COMMON="-kFGhA --classify --color=auto --show-control-chars"
 
-if [ -f ~/.local/bin/updot ]; then
-    ~/.local/bin/updot
+if chk-update dotfiles; then
+    printf "== Updating .dotfiles ==\n"
+    (cd $HOME/.dotfiles && git pull)
+    tar -cf - -C $HOME/.dotfiles --exclude-backups --exclude-vcs . | tar -xpf - -C $HOME >/dev/null 2>&1
+    chk-update -u dotfiles
+    exec bash -i -l
 fi
 
-# Get the aliases and functions
-if [ -f ~/.bashrc ]; then
-    . ~/.bashrc
+# Source $HOME/.bash_user for custom setup that for user specific stuff
+if [[ -f $HOME/.bash_user ]]; then
+    . $HOME/.bash_user
 fi
 
-# User specific environment and startup programs
+# Source the $HOME/.bashrc file if it exists
+if [[ -f $HOME/.bashrc ]]; then
+    . $HOME/.bashrc
+fi
+
+which zoxide >/dev/null 2>&1 && eval "$(zoxide init --cmd cd bash)"
+
+if which oh-my-posh >/dev/null 2>&1 ; then
+    if [[ -n $POSH_PROMPT_CUSTOM && -f $POSH_PROMPT_CUSTOM ]]; then
+    	eval "$(oh-my-posh init bash --config $POSH_PROMPT_CUSTOM)"
+    else
+    	eval "$(oh-my-posh init bash --config froczh)"
+    fi
+fi

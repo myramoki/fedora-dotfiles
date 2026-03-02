@@ -1,9 +1,0 @@
-desdir=/opt/biznuvo/apps/designer
-deslog=/opt/biznuvo/logs/designer
-
-alias cdd='cd $desdir'
-alias cddl='cd $deslog'
-alias cdw='cd $desdir/work'
-
-alias tfd='tail -F $deslog/app.log'
-alias lld='less $deslog/app.log'

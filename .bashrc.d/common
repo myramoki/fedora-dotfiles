@@ -1,7 +1,0 @@
-alias tm='sudo -u tomcat'
-alias tmb='sudo -u tomcat bash'
-
-alias woff='setterm -linewrap off'
-alias won='setterm -linewrap on'
-
-alias updatedot='updot; exec bash'

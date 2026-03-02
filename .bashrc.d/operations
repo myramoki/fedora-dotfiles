@@ -1,8 +1,0 @@
-opsdir=/opt/biznuvo/apps/development#design#operations
-opslog=/opt/biznuvo/logs/development#design#operations
-
-alias cdo='cd $opsdir'
-alias cdol='cd $opslog'
-
-alias tfo='tail -F $opslog/app.log'
-alias llo='less $opslog/app.log'
